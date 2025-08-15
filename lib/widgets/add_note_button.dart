@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AddNoteButton extends StatelessWidget {
-  const AddNoteButton({super.key});
-
+  const AddNoteButton({super.key, this.onPressed});
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -10,7 +10,7 @@ class AddNoteButton extends StatelessWidget {
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xff62fcd7),
             padding: EdgeInsets.symmetric(vertical: 12.0),
