@@ -9,8 +9,8 @@ import 'package:notes_app/simple_bloc_observer.dart';
 main() async {
   await Hive.initFlutter();
   Bloc.observer = SimpleBlocObserver();
-  await Hive.openBox('notes_box');
   Hive.registerAdapter(NoteModelAdapter());
+  await Hive.openBox<Note>('notes_box');
   runApp(MyApp());
 }
 
