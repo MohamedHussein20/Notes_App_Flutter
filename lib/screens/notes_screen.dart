@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/widgets/add_note_bottom_sheet.dart';
 import 'package:notes_app/widgets/notes_screen_body.dart';
 
@@ -7,22 +9,25 @@ class NotesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: NotesScreenBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            isScrollControlled: true,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            context: context,
-            builder: (context) {
-              return AddNoteBottomSheet();
-            },
-          );
-        },
-        child: Icon(Icons.add),
+    return BlocProvider(
+      create: (context) => NotesCubit(),
+      child: Scaffold(
+        body: NotesScreenBody(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showModalBottomSheet(
+              isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              context: context,
+              builder: (context) {
+                return AddNoteBottomSheet();
+              },
+            );
+          },
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
