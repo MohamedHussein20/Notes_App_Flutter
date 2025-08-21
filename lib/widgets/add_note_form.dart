@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/add_note_button.dart';
+import 'package:notes_app/widgets/colors_listview.dart';
 import 'package:notes_app/widgets/custom_textfield.dart';
 
 class AddNoteForm extends StatefulWidget {
@@ -42,6 +43,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             },
           ),
           SizedBox(height: 16),
+          ColorsListView(),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return AddNoteButton(
@@ -50,7 +52,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     var currentDate = DateTime.now();
-                    var formattedCurrentDate = DateFormat.yMd().format(currentDate);
+                    var formattedCurrentDate = DateFormat.yMd().format(
+                      currentDate,
+                    );
                     Note note = Note(
                       title: title!,
                       subtitle: subtitle!,
@@ -72,3 +76,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
     );
   }
 }
+
+
+
