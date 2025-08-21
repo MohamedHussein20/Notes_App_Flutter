@@ -11,6 +11,12 @@ analyzer:
   errors:
     must_be_immutable: ignore
     depend_on_referenced_packages: ignore
+  exclude:
+    - build/**
+    - .dart_tool/**
+    - node_modules/**
+    - ios/**
+    - android/**
 include: package:flutter_lints/flutter.yaml
 
 linter:
