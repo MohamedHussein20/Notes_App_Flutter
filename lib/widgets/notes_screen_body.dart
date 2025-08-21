@@ -14,7 +14,6 @@ class NotesScreenBody extends StatefulWidget {
 class _NotesScreenBodyState extends State<NotesScreenBody> {
 @override
 void initState(){
-  
   BlocProvider.of<NotesCubit>(context).fetchAllNotes();
   super.initState();
 }
