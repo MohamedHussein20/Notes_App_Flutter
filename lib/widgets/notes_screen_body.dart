@@ -12,11 +12,11 @@ class NotesScreenBody extends StatefulWidget {
 }
 
 class _NotesScreenBodyState extends State<NotesScreenBody> {
-@override
-void initState(){
-  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-  super.initState();
-}
+  @override
+  void initState() {
+    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,21 @@ void initState(){
       child: Column(
         children: [
           SizedBox(height: 50),
-          CustomAppBar(title: "Notes", icon: Icons.search),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  "Notes",
+                  style: TextStyle(fontSize: 28, color: Colors.white),
+                ),
+              ),
+            ],
+          ),
           Expanded(child: NotesListView()),
         ],
       ),
     );
   }
 }
-
